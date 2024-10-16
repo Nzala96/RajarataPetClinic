@@ -1,0 +1,297 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Rajarata Pet Clinic</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <i class="fa-solid fa-user"></i>
+          <a class="nav-link" routerLink="/#contact">{{ username || 'User Name' }}</a>
+        </li>
+      </ul>
+      <!-- <a routerLink="/appointment" class="btn btn-primary appointment-btn">Make an Appointment</a> -->
+      <div>
+        <a (click)="signOut()" class="btn btn-primary appointment-btn loginBtn">SignOut</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link " href="index.html">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+
+    <li class="nav-item" *ngIf="userIsAdmin === 'true'">
+      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="components-alerts.html">
+            <i class="bi bi-circle"></i><span>Users</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/view-appointment']" >
+            <i class="bi bi-circle"></i><span>Appointments</span>
+          </a>
+        </li>
+        <li>
+          <a href="components-badges.html">
+            <i class="bi bi-circle"></i><span>Announcement</span>
+          </a>
+        </li>
+        <li>
+          <a href="components-breadcrumbs.html">
+            <i class="bi bi-circle"></i><span>Manage Pet Details</span>
+          </a>
+        </li>
+        <li>
+          <a href="components-buttons.html">
+            <i class="bi bi-circle"></i><span>Medical History</span>
+          </a>
+        </li>
+        <li>
+          <a href="components-cards.html">
+            <i class="bi bi-circle"></i><span>Payment Details</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Components Nav -->
+
+    <li class="nav-item" *ngIf="userIsAdmin === 'true'">
+      <a class="nav-link collapsed" data-bs-target="#doctor-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-person"></i><span>Manage Doctor</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="doctor-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a [routerLink]="['/create-doctor']">
+            <i class="bi bi-circle"></i><span>Create Doctor</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/update-doctor']">
+            <i class="bi bi-circle"></i><span>Update Doctor</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Appointment</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a [routerLink]="['/appointment']" class="active">
+            <i class="bi bi-circle"></i><span>Create Appointment</span>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/update-appoinment']">
+            <i class="bi bi-circle"></i><span>Update Appoinment</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-login.html">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <span>Medical History</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-gem"></i><span>Payment</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="icons-bootstrap.html">
+            <i class="bi bi-circle"></i><span>Make Payment</span>
+          </a>
+        </li>
+        <li>
+          <a href="icons-remix.html">
+            <i class="bi bi-circle"></i><span>Payment History</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Icons Nav -->
+
+    <li class="nav-heading">Pages</li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="users-profile.html">
+        <i class="bi bi-person"></i>
+        <span>Profile</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-faq.html">
+        <i class="bi bi-question-circle"></i>
+        <span>F.A.Q</span>
+      </a>
+    </li><!-- End F.A.Q Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-contact.html">
+        <i class="bi bi-envelope"></i>
+        <span>Contact</span>
+      </a>
+    </li><!-- End Contact Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-register.html">
+        <i class="bi bi-card-list"></i>
+        <span>Register</span>
+      </a>
+    </li><!-- End Register Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-login.html">
+        <i class="bi bi-box-arrow-in-right"></i>
+        <span>Login</span>
+      </a>
+    </li><!-- End Login Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-error-404.html">
+        <i class="bi bi-dash-circle"></i>
+        <span>Error 404</span>
+      </a>
+    </li><!-- End Error 404 Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="pages-blank.html">
+        <i class="bi bi-file-earmark"></i>
+        <span>Blank</span>
+      </a>
+    </li><!-- End Blank Page Nav -->
+
+  </ul>
+
+</aside><!-- End Sidebar-->
+
+<main id="main" class="main">
+  <section id="appointment" class="appointment section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Make an Appointment</h2>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" role="form" class="php-email-form">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" [(ngModel)]="username" readonly required>
+            <div class="invalid-feedback">Please enter your name.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" [(ngModel)]="useremail" readonly required>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" [(ngModel)]="appointmentData.tp" required>
+            <div class="invalid-feedback">Please enter your phone number.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <input type="datetime-local" name="date" class="form-control" id="date" placeholder="Appointment Date" [(ngModel)]="appointmentData.date" required>
+            <div class="invalid-feedback">Please enter a valid date and time.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="text" class="form-control" name="pname" id="pname" placeholder="Your Pet Name" [(ngModel)]="appointmentData.petname" required>
+            <div class="invalid-feedback">Please enter your pet's name</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <select name="doctor" id="doctor" class="form-select" [(ngModel)]="appointmentData.docname" required>
+              <option value="">Select Doctor</option>
+              <option *ngFor="let doctor of doctors" [value]="doctor.dname">{{ doctor.dname }}</option>
+            </select>
+            <div class="invalid-feedback">Please select a doctor.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)" [(ngModel)]="appointmentData.message"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary subBtn">Make an Appointment</button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+</main>
+
+
+<!-- <main id="main" class="main">
+
+  <section id="appointment" class="appointment section-bg">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Make an Appointment</h2>
+      </div>
+
+      <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" [value]="username" readonly required>
+            <div class="invalid-feedback">Please enter your name.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" [value]="useremail" readonly required>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+            <div class="invalid-feedback">Please enter your phone number.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <input type="datetime-local" name="date" class="form-control" id="date" placeholder="Appointment Date" required>
+            <div class="invalid-feedback">Please enter a valid date and time.</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="pname" class="form-control" name="pname" id="pname" placeholder="Your Pet Name" required>
+            <div class="invalid-feedback">Please enter your pet's name</div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <select name="doctor" id="doctor" class="form-select" required>
+              <option value="">Select Doctor</option>
+              <option *ngFor="let doctor of doctors" [value]="doctor.id">{{ doctor.dname }}</option>
+            </select>
+            <div class="invalid-feedback">Please select a doctor.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+        </div>
+        <div class="mb-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit" class="btn btn-primary">Make an Appointment</button></div>
+      </form>
+
+    </div>
+  </section>
+
+</main>End #main -->
